@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form action="/" method="post">
+        {% csrf_token %}
     <h1 >Submitted Info</h1>
     <p>Name: {{name_on_template}}</p>
     <p>Dojo Location: {{location_on_template}}</p>
     <p>Favorate Language: {{Language_on_template}}</p>
     <p>Comment: {{Comment_on_template}}</p>
-    <input type='submit' class="Button2" value='Go back'>
+    <input name="goBack" type='submit' class="Button2" value='Go back'>
     </form>
 </body>
 </html>
