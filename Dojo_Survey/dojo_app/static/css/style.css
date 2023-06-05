@@ -1,0 +1,32 @@
+form{
+    width: 30%;
+    height: 200px;
+    padding: 50px ;
+    align-items: center;
+    margin: auto;
+    border: 0.2ex solid black;
+    
+    /* text-align: center; */
+}
+.div{
+    text-align: left;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+.Name{
+
+
+}
+.form-select{
+    width: 200px;
+}
+.form-select2{
+    width: 200px;
+}
+.textarea{
+    /* background-color: red; */
+}
+.Button{
+
+}

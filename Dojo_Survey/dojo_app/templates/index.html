@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <title>Dojo Survey</title>
+</head>
+
+<body>
+    
+    <form action='/result' method='post'>
+        {% csrf_token %}
+        <div class="Name">
+            Your Name : <input type='text' name='name'>
+        </div>
+        <div>
+            Dojo Location :
+            <select name="Location" class="form-select" aria-label="Default select example">
+                <option selected>jinen</option>
+                <option value="1">ramallah</option>
+                <option value="2">nables</option>
+                <option value="3">hebron</option>
+            </select>
+        </div>
+        <div>
+            Favorite Language :
+            <select name="Language" class="form-select2" aria-label="Default select example">
+                <option selected>java</option>
+                <option value="1">c++</option>
+                <option value="2">c</option>
+                <option value="3">python</option>
+            </select>
+        </div>
+        <div>
+            Comment (optinal) :
+            <textarea  class="textarea" id="w3review" name="Comment" rows="4" cols="50"></textarea>
+        </div>
+        <div>
+            <input name="Button" type='submit' class="Button" value='Button'>
+        </div>
+
+    </form>
+
+
+</body>
+
+</html>
