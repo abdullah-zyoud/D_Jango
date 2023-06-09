@@ -1,0 +1,67 @@
+Run the shell and import your User model
+python manage.py shell
+Python 3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from users_app.models import User
+////////////////////////////////////////////////
+Query: Create 3 new users
+
+User.objects.create(first_name="abdullah", last_name="zyoud", email_address="abood.com",age=25)
+<User: User object (1)>
+>>> User.objects.create(first_name="ahmad", last_name="abo baker", email_address="ahmad.com",age=27)
+<User: User object (2)>
+>>> User.objects.create(first_name="mohammad", last_name="jarrar", email_address="mohammad.com",age=30)
+<User: User object (3)>
+///////////////////////////////////
+Query: Retrieve all the users
+ User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+/////////////////////////////////////////////////////////
+Query: Retrieve the last user
+ User.objects.last()
+<User: User object (3)>
+///////////////////////////////////
+Query: Retrieve the first user
+ User.objects.first()
+<User: User object (1)>
+//////////////////////////////////////////////
+Query: Change the user with id=3 so their last name is Pancakes
+ c = User.objects.get(id=3)
+>>> c.last_name = "Pancakes"
+>>> c.save()
+//////////////////////////////////////////
+Query: Delete the user with id=2 from the database
+ c = User.objects.get(id=2)
+>>> c.delete()
+///////////////////////////////////////////////
+Query: Get all the users, sorted by their first name
+ User.objects.all().order_by("first_name")
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+////////////////////////////////////////////////
+
+Get all the users, sorted by their first name in descending order
+ User.objects.all().order_by("-first_name")
+<QuerySet [<User: User object (3)>, <User: User object (1)>]>
+//////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
