@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Document</title>
+        <style>
+           .all{
+            
+            display: flex;
+            width: 100%;
+            
+            
+           }
+
+           form{
+            width: 500px;
+            margin-left: 200px;
+            margin-top: 50px;
+           
+        
+           }
+           .form-control{
+            width: 100px;
+           }
+           ul{
+            list-style: none;
+           }
+           .footer{
+            width: 20%;
+            margin: auto;
+            
+           }
+        </style>
+</head>
+
+<body>
+
+    <div class="all">
+       
+        <form  action="/dojo_info" method="POST">{% csrf_token %}
+            <h1>Add a Dojo</h1>
+
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="name">
+                </div>
+
+                <br> </br>
+
+            </div>
+
+            <div class="form-group row">
+
+                <label for="city" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="city">
+                </div>
+                <br> </br>
+
+            </div>
+           
+
+            <div class="form-group row">
+                <label for="state" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="state">
+                </div>
+
+                <br> </br>
+
+                
+            </div>
+            <div class="add">
+                <button type="submit" class="btn btn-primary mb-2" name="add">Add</button>
+            </div>
+        </form>
+        <form action="/ninja_info" method="POST">{% csrf_token %}
+            <h1>Add a Ninja</h1>
+
+            <div class="form-group row">
+                <label for="firsname" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="first_name">
+                </div>
+
+                <br> </br>
+
+            </div>
+
+            <div class="form-group row">
+
+                <label for="lastname" class="col-sm-2 col-form-label">last Name</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="last_name">
+                </div>
+                <br> </br>
+
+            </div>
+           
+
+            <div class="form-group row">
+                <label for="state" class="col-sm-2 col-form-label">Dojo</label>
+                <div class="col-sm-2">
+
+                    <select name="dojo" >
+                        {% for dojo in all_dojo %}
+                        <option value="{{dojo.id}}">{{dojo.name}}</option>
+                        {% endfor %}
+                        
+                      </select>
+                
+                </div>
+
+                <br> </br>
+
+                
+            </div>
+            <div class="add">
+                <button type="submit" class="btn btn-primary mb-2" name="add">Add</button>
+            </div>
+        </form>
+    </div>
+    <hr>
+    
+    <div class="footer">
+        <h1>All the Dojos</h1>
+        <ul>
+            {% for dojo in all_dojo %}
+              <li>
+                <span>{{dojo.ninjas.count}}</span>
+                {{dojo.name}}
+                <a class="btn btn-primary" href="/{{dojo.id}}" role="button">Delete</a>
+                <ul>
+                  {% for ninja in dojo.ninjas.all %}
+                  	
+                  
+                    <li><em>{{ninja.first_name}}</em></li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ul>
+        
+        
+    </div>
+
+</body>
+
+</html>
