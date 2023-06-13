@@ -1,0 +1,115 @@
+
+
+/////////////////////////////////////////////////
+
+Query: Change the name of the C Sharp book to C#
+
+
+from books_authors_app.models import Book , Author
+>>> C_Sharp=Book.objects.get(id=1)
+>>> C_Sharp.title="C_#"
+>>> C_Sharp.save()
+//////////////////////////////////////////////////////
+Query: Change the first name of the 4th author to Bill
+
+>>> Bill=Author.objects.get(id=4)
+>>> Bill.first_name="Bill"
+>>> Bill.save()
+///////////////////////////////////////
+Query: Assign the first author to the first 2 books
+
+ Jan=Author.objects.get(id=1)
+>>> b1=Book.objects.get(id=1)
+>>> b2=Book.objects.get(id=2)
+>>> Jan.books.add(b1)
+>>> Jan.books.add(b2)
+>>> Jan.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>]>
+
+//////////////////////////////////////////
+Query: Assign the second author to the first 3 books
+ Emily=Author.objects.get(id=2)
+>>> b3=Book.objects.get(id=3)
+>>> Emily.books.add(b1,b2,b3)
+>>> Emily.books.all()
+/////////////////////////////////////
+
+Query: Assign the third author to the first 4 books
+fy=Author.objects.get(id=3)
+>>> b4=Book.objects.get(id=4)
+>>> fy.books.add(b1,b2,b3,b4)
+>>> fe.books.all()
+///////////////////////////////////////////////
+
+Query: Assign the fourth author to the first 5 books (or in other words, all the books)
+fy=Author.objects.get(id=4)
+>>> b5=Book.objects.get(id=5)
+>>> fy.books.add(b1,b2,b3,b4,b5)
+
+/////////////////////////////////////////
+
+Query: Retrieve all the authors for the 3rd book
+ b3.authors.all()
+<QuerySet [<Author: Author object (2)>, <Author: Author object (3)>, <Author: Author object (4)>]>
+
+//////////////////////////////////////////////////
+
+Query: Remove the first author of the 3rd book
+
+rem=b3.authors.first()
+>>> rem.delete()
+
+/////////////////////////////////////////////
+
+Query: Add the 5th author as one of the authors of the 2nd book
+
+ f=Author.objects.get(id=5)
+>>> b2.authors.add(f)
+
+/////////////////////////////////////
+
+Query: Find all the books that the 3rd author is part of
+
+ f=Author.objects.get(id=3)
+>>> f.books.all()
+<QuerySet [<Book: Book object (1)>, <Book: Book object (2)>, <Book: Book object (3)>, <Book: Book object (4)>]>
+>>>
+
+//////////////////////////////////////
+
+Query: Find all the authors that contributed to the 5th book
+ b=Book.objects.get(id=5)
+>>> b.authors.all()
+<QuerySet [<Author: Author object (4)>]>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

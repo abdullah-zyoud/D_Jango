@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+        .table {
+            width: 20%;
+        }
+
+        .contaner {
+            width: 70%;
+            margin: auto;
+            position: relative;
+            display: flex;
+            margin-top: 50px;
+            margin-left:150px;
+        }
+        form{
+            width: 80%;
+            margin-left: 100px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <a  class="btn btn-primary" href="/" role="button">Add Book</a>
+
+    <div class="contaner">
+        
+        <form action="/authors" method="POST">{% csrf_token %}
+            <h1>Add a Author</h1>
+
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="first_name">
+                </div>
+
+                <br> </br>
+
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" name="last_name">
+                </div>
+
+                <br> </br>
+
+            </div>
+
+            <div class="form-group row">
+
+                <label for="Description" class="col-sm-2 col-form-label">Note</label>
+                <div class="col-sm-2">
+                    <textarea class="form-control" id="textAreaExample1" rows="4" name="notes"></textarea>
+                </div>
+                <br> </br>
+
+            </div>
+
+            <br> </br>
+
+
+
+            <div class="add">
+                <button type="submit" class="btn btn-primary mb-2" name="add">Add</button>
+            </div>
+        </form>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for author in all_the_author %}
+                    <tr>
+                        <td>{{ author.id}}</td>
+                        <td>{{ author.first_name}} {{ author.last_name}}</td>
+                        <td><a href="/aut/{{author.id}}">Action</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

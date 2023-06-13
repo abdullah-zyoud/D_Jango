@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .head{
+            width: 70%;
+            margin: auto;
+            margin-top: 70px;
+        }
+        ul{
+            list-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <a class="btn btn-primary" href="/" role="button">Back</a>
+
+    <div class="head">
+    <h1>{{ book.title}}</h1>
+    <h3>ID : {{book.id}}</h3>
+    <p>Description : {{book.desc}}</p>
+    <ul>
+        Authors :
+        
+          
+            
+            <ul>
+              {% for author in book.authors.all %}
+                  
+                <li><em>{{author.first_name}} {{author.last_name}}</em></li>
+              {% endfor %}
+            </ul>
+        
+      </ul>
+      <form action="/books/{{book.id}}/add" method="POST">{% csrf_token %}
+      <div class="form-group row">
+        <div class="col-sm-2">
+
+            <select name="book_select" >
+                {% for author in all_the_author %}
+                <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+                {% endfor %}
+                
+              </select>
+        
+        </div>
+
+        <br> </br>
+
+        
+    </div>
+    <div class="add">
+        <button type="submit" class="btn btn-primary mb-2" name="add">Add</button>
+    </div>
+</form>
+</div>
+    
+</body>
+</html>
