@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Edit Show</title>
+
+    <style>
+        form{
+            width: 90%;
+            margin-left: 400px;
+            margin-top: 80px;
+            
+         
+            
+        }
+        button{
+            margin-top: 30px;
+            margin-left: 200px;
+        }
+        h1{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .goback{
+            margin-left: 900px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>Edit Show {{show.id}}</h1> <a class="goback" href="/">Go Back</a>
+    <form action="/edit_show/{{show.id}}" method="POST">{% csrf_token %}
+
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="title">Title</label>
+                <input type="text" class="form-control"  name="title" value="{{show.title}}">
+            </div>
+
+        </div>
+
+        <br>
+        <div class="row">
+
+            <div class="form-group col-md-2">
+                <label for="net">Network</label>
+                <input type="text" class="form-control" name="network" value="{{show.network}}">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="rel">Release Date</label>
+                <input type="date" class="form-control"  name="release_date" value="{{show.release_date}}">
+            </div>
+
+        </div>
+        <br>
+
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="title">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" >{{show.description}}</textarea>
+            </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    <a style="margin-left: 600px;" href="/view_show/{{show.id}}">Go To Show</a>
+</body>
+
+</html>
