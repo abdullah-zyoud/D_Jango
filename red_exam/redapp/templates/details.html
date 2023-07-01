@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Details</title>
+    <style>
+        
+        body{
+            padding: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    
+     {% if teams.user.id == user_id %}
+    <h1>{{teams.team_name}}</h1>
+    <a   href="/display">dashbord</a>
+
+    <p>Team Name : {{teams.team_name}}</p>
+    
+    <p>Skill Level : {{teams.skill_level}}</p>
+    <p>Game Day : {{teams.game_day}}</p>
+    <hr>
+    <p> <a  style="margin-left: 240px;"  href="/edit_show/{{teams.id}}">edit</a></p>
+    <p><a style="margin-left: 240px;"  href="/edit_show/{{teams.id}}">delete</a></p>
+    {% else %}
+    <h1>{{teams.team_name}}</h1>
+    <a   href="/display">dashbord</a>
+
+    <p>Team Name : {{teams.team_name}}</p>
+    
+    <p>Skill Level : {{teams.skill_level}}</p>
+    <p>Game Day : {{teams.game_day}}</p>
+    <hr>
+    {% endif %}
+    
+    
+
+   
+</body>
+
+</html>
